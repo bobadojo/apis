@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package bobadojo.stores.v1;
+
+option go_package = "github.com/bobadojo/stores/rpc;rpc";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+// A store locator API
+//
+service StoreLocator {
+  // Returns a list of all stores in the store.
+  rpc ListStores(google.protobuf.Empty) returns (ListStoresResponse) {
+    // Define HTTP mapping.
+    // Client example (Assuming your service is hosted at the given 'DOMAIN_NAME'):
+    //   curl http://DOMAIN_NAME/v1/stores
+    option (google.api.http) = { get: "/v1/stores" };
+  }
+  // Returns a specific store.
+  rpc GetStore(GetStoreRequest) returns (Store) {
+    // Client example - returns the first store:
+    //   curl http://DOMAIN_NAME/v1/stores/1
+    option (google.api.http) = { get: "/v1/stores/{store}" };
+  }
+}
+
+// A store resource.
+message Store {
+  // A unique id.
+  int64 id = 1;
+  // An optional description.
+  string description = 2;
+}
+
+// Response to ListStores call.
+message ListStoresResponse {
+  // Stores in the datastore.
+  repeated Store stores = 1;
+}
+
+// Request message for GetStore method.
+message GetStoreRequest {
+  // The ID of the store resource to retrieve.
+  int64 store = 1;
+}
+
