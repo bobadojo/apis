@@ -6,3 +6,38 @@ option go_package = "github.com/bobadojo/go/pkg/menu/v1/menupb;menupb";
 option java_multiple_files = true;
 option java_outer_classname = "MenuProto";
 option java_package = "com.bobadojo.menu.v1";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+
+// Get information about store menus.
+service Menus {
+  // Returns a menu for a specific store.
+  rpc GetMenu(GetMenuRequest) returns (Menu) {
+    // Client example - returns the first store:
+    //   curl http://DOMAIN_NAME/v1/stores/1
+    option (google.api.http) = { get: "/v1/menus/{name=store}" };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// Request to GetMenu.
+message GetMenuRequest {
+  // The ID of the menu resource to retrieve.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "menus.bobadojo.com/Menu"
+    }
+  ];
+}
+
+// A store resource.
+message Menu {
+    // A unique id.
+    int64 id = 1 [(google.api.field_behavior) = REQUIRED];
+    // A description of the menu
+    string description = 2 [(google.api.field_behavior) = OPTIONAL];
+}

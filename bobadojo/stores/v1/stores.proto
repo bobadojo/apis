@@ -12,7 +12,7 @@ import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
 
-// A store locator API
+// Locate stores and related details.
 service Stores {
   // Returns a list of all stores in the store.
   rpc FindStores(FindStoresRequest) returns (FindStoresResponse) {
