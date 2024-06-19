@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bobadojo.messages.v1;
 
-option go_package = "github.com/bobadojo/go/messages/v1/messagespb;messagespb";
+option go_package = "github.com/bobadojo/go/pkg/messages/v1/messagespb;messagespb";
 option java_multiple_files = true;
 option java_outer_classname = "MessagesProto";
 option java_package = "com.bobadojo.messages.v1";

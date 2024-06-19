@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bobadojo.payments.v1;
 
-option go_package = "github.com/bobadojo/go/payments/v1/paymentspb;paymentspb";
+option go_package = "github.com/bobadojo/go/pkg/payments/v1/paymentspb;paymentspb";
 option java_multiple_files = true;
 option java_outer_classname = "PaymentsProto";
 option java_package = "com.bobadojo.payments.v1";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bobadojo.fulfillment.v1;
 
-option go_package = "github.com/bobadojo/go/fulfillment/v1/fulfillmentpb;fulfillmentpb";
+option go_package = "github.com/bobadojo/go/pkg/fulfillment/v1/fulfillmentpb;fulfillmentpb";
 option java_multiple_files = true;
 option java_outer_classname = "FulfillmentProto";
 option java_package = "com.bobadojo.fulfillment.v1";

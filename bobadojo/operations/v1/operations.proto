@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bobadojo.operations.v1;
 
-option go_package = "github.com/bobadojo/go/operations/v1/operationspb;operationspb";
+option go_package = "github.com/bobadojo/go/pkg/operations/v1/operationspb;operationspb";
 option java_multiple_files = true;
 option java_outer_classname = "OperationsProto";
 option java_package = "com.bobadojo.operations.v1";

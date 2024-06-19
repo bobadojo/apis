@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bobadojo.menu.v1;
 
-option go_package = "github.com/bobadojo/go/menu/v1/menupb;menupb";
+option go_package = "github.com/bobadojo/go/pkg/menu/v1/menupb;menupb";
 option java_multiple_files = true;
 option java_outer_classname = "MenuProto";
 option java_package = "com.bobadojo.menu.v1";
