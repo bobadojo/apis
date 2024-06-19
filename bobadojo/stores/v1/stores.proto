@@ -7,14 +7,12 @@ option java_multiple_files = true;
 option java_outer_classname = "StoresProto";
 option java_package = "com.bobadojo.stores.v1";
 
-
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
 
 // A store locator API
-//
 service StoreLocator {
   // Returns a list of all stores in the store.
   rpc FindStores(FindStoresRequest) returns (FindStoresResponse) {

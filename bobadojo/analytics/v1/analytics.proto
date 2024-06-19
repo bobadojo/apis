@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package bobadojo.analytics.v1;
+
+option go_package = "github.com/bobadojo/go/analytics/v1/analyticspb;analyticspb";
+option java_multiple_files = true;
+option java_outer_classname = "AnalyticsProto";
+option java_package = "com.bobadojo.analytics.v1";

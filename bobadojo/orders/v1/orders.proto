@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package bobadojo.orders.v1;
+
+option go_package = "github.com/bobadojo/go/orders/v1/orderspb;menupb";
+option java_multiple_files = true;
+option java_outer_classname = "OrdersProto";
+option java_package = "com.bobadojo.orders.v1";
