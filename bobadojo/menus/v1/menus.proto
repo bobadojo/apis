@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package bobadojo.menu.v1;
+package bobadojo.menus.v1;
 
-option go_package = "github.com/bobadojo/go/pkg/menu/v1/menupb;menupb";
+option go_package = "github.com/bobadojo/go/pkg/menus/v1/menuspb;menuspb";
 option java_multiple_files = true;
-option java_outer_classname = "MenuProto";
-option java_package = "com.bobadojo.menu.v1";
+option java_outer_classname = "MenusProto";
+option java_package = "com.bobadojo.menus.v1";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

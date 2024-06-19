@@ -52,9 +52,9 @@ Customer and point of sale applications use the **Customers API** to allow custo
 
 Store operations applications use the **Fulfillment API** to receive orders and report fulfillment and to report any concerns, such as customer complaints or overrides.
 
-### The Menu API
+### The Menus API
 
-Customer and point of sale applications use the **Menu API** to list available menu items and pricing, which can vary by locations. In addition to food items, the Menu API lists any merchandise available in store locations.
+Customer and point of sale applications use the **Menus API** to list available menu items and pricing, which can vary by locations. In addition to food items, the Menus API lists any merchandise available in store locations.
 
 ### The Messages API
 
