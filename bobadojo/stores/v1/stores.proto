@@ -32,10 +32,30 @@ service Stores {
 
 // A store resource.
 message Store {
-  // A unique id.
+  // A unique id (aka store number)
   int64 id = 1 [(google.api.field_behavior) = REQUIRED];
-  // A description of the store
-  string description = 2 [(google.api.field_behavior) = OPTIONAL];
+  // An identifier indicating the type of store
+  string type = 4;
+  // Store name
+  string title = 5;
+  // Street address
+  string address = 6;
+  // City
+  string city = 7;
+  // State
+  string state = 8;
+  // Zip code
+  int32 zip_code = 9;
+  // String-encoded store hours
+  string store_hours = 10;
+  // Latitude
+  float latitude = 11;
+  // Longitude
+  float longitude = 12;
+  // Country
+  string region_code = 13;
+  // County
+  string county = 14;
 }
 
 // Request to FindStores.
