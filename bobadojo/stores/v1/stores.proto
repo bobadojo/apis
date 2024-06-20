@@ -38,32 +38,36 @@ message Store {
   string type = 4;
   // Store name
   string title = 5;
+  // Store location
+  Location location = 6;
+  // Store address
+  Address address = 7;
+  // Store hours
+  string store_hours = 8;
+}
+
+// Address
+message Address {
   // Street address
-  string address = 6;
+  string street = 1;
   // City
-  string city = 7;
+  string city = 2;
   // State
-  string state = 8;
+  string state = 3;
   // Zip code
-  int32 zip_code = 9;
-  // String-encoded store hours
-  string store_hours = 10;
-  // Latitude
-  float latitude = 11;
-  // Longitude
-  float longitude = 12;
-  // Country
-  string region_code = 13;
-  // County
-  string county = 14;
+  int32 zip_code = 4;
+   // Country
+   string region_code = 5;
+   // County
+   string county = 6;
 }
 
 // Request to FindStores.
 message FindStoresRequest {
   // Bounding box of the request.
-  Box bounding_box = 1;
+  BoundingBox bounding_box = 1;
   // Center point of the request.
-  Point center = 2;
+  Location center = 2;
 }
 
 // Response from FindStores.
@@ -84,15 +88,15 @@ message GetStoreRequest {
 }
 
 // A bounding box.
-message Box {
+message BoundingBox {
   // Maximum coordinate values.
-  Point max = 1;
+  Location max = 1;
   // Minimum coordinate values.
-  Point min = 2;
+  Location min = 2;
 }
 
-// A point.
-message Point {
+// A location.
+message Location {
   // Latitude of the point.
   float latitude = 1;
   // Longitude of the point.
