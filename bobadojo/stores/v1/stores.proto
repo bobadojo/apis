@@ -12,13 +12,19 @@ import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
 
-// Locate stores and related details.
+// Get stores and related information.
 service Stores {
-  // Returns a list of all stores in the store.
+  // List all stores.
+  rpc ListStores(ListStoresRequest) returns (ListStoresResponse) {
+    // Client example (Assuming your service is hosted at the given 'DOMAIN_NAME'):
+    //   curl http://DOMAIN_NAME/v1/stores
+    option (google.api.http) = { get: "/v1/stores" };
+  }
+  // Returns a list of all stores in a specified region.
   rpc FindStores(FindStoresRequest) returns (FindStoresResponse) {
     // Define HTTP mapping.
     // Client example (Assuming your service is hosted at the given 'DOMAIN_NAME'):
-    //   curl http://DOMAIN_NAME/v1/stores
+    //   curl http://DOMAIN_NAME/v1/stores:find
     option (google.api.http) = { get: "/v1/stores:find" };
   }
   // Returns a specific store.
@@ -30,13 +36,19 @@ service Stores {
   }
 }
 
-// A store resource.
+// A store.
 message Store {
-  // A unique id (aka store number)
-  int64 id = 1 [(google.api.field_behavior) = REQUIRED];
+  option (google.api.resource) = {
+    type: "stores.bobadojo.io/Store"
+    pattern: "stores/{store}"
+    singular: "store"
+    plural: "stores"
+  };
+  // A unique id (e.g. store number)
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
   // An identifier indicating the type of store
   string type = 4;
-  // Store name
+  // Store name (human-readable)
   string title = 5;
   // Store location
   Location location = 6;
@@ -46,7 +58,7 @@ message Store {
   string store_hours = 8;
 }
 
-// Address
+// An address.
 message Address {
   // Street address
   string street = 1;
@@ -62,18 +74,34 @@ message Address {
    string county = 6;
 }
 
+// A location in terrestrial coordinates.
+message Location {
+  // Latitude of the location.
+  float latitude = 1 [(google.api.field_behavior) = REQUIRED];
+  // Longitude of the location.
+  float longitude = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// A bounding box in terrestrial coordinates.
+message BoundingBox {
+  // Maximum coordinate values.
+  Location max = 1 [(google.api.field_behavior) = REQUIRED];
+  // Minimum coordinate values.
+  Location min = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
 // Request to FindStores.
 message FindStoresRequest {
   // Bounding box of the request.
-  BoundingBox bounding_box = 1;
-  // Center point of the request.
-  Location center = 2;
+  BoundingBox bounds = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 // Response from FindStores.
 message FindStoresResponse {
-  // Stores in the datastore.
-  repeated Store stores = 1;
+  // Number of matching stores.
+  int32 count = 1;
+  // Matching stores.
+  repeated Store stores = 2;
 }
 
 // Request to GetStore.
@@ -87,18 +115,18 @@ message GetStoreRequest {
   ];
 }
 
-// A bounding box.
-message BoundingBox {
-  // Maximum coordinate values.
-  Location max = 1;
-  // Minimum coordinate values.
-  Location min = 2;
+// Request to ListStores.
+message ListStoresRequest {
+  // Page size.
+  int32 page_size = 2 [(google.api.field_behavior) = OPTIONAL];
+  // Pagination token.
+  string page_token = 3 [(google.api.field_behavior) = OPTIONAL];
 }
 
-// A location.
-message Location {
-  // Latitude of the point.
-  float latitude = 1;
-  // Longitude of the point.
-  float longitude = 2;
+// Response from ListStores.
+message ListStoresResponse {
+  // List of stores.
+  repeated Store stores = 1;
+  // Token of next page.
+  string next_page_token = 2;
 }
