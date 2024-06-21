@@ -94,6 +94,8 @@ message BoundingBox {
 message FindStoresRequest {
   // Bounding box of the request.
   BoundingBox bounds = 1 [(google.api.field_behavior) = REQUIRED];
+  // Maximum number of results to return.
+  int32 limit = 2 [(google.api.field_behavior) = OPTIONAL];
 }
 
 // Response from FindStores.
