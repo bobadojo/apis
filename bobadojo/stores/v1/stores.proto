@@ -5,7 +5,7 @@ package bobadojo.stores.v1;
 option go_package = "github.com/bobadojo/go/pkg/stores/v1/storespb;storespb";
 option java_multiple_files = true;
 option java_outer_classname = "StoresProto";
-option java_package = "com.bobadojo.stores.v1";
+option java_package = "io.bobadojo.stores.v1";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
@@ -112,7 +112,7 @@ message GetStoreRequest {
   string name = 1 [
     (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
-      type: "stores.bobadojo.com/Store"
+      type: "stores.bobadojo.io/Store"
     }
   ];
 }
